@@ -41,6 +41,7 @@ Disaster-response-analyzer/
 ├── requirements.txt           # Required dependencies for the project
 ├── README.md                  # Project documentation
 └── .gitignore                 # Git ignore file
+```
 
 # Disaster Response Analyzer
 
