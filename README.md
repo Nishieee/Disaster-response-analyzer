@@ -9,8 +9,6 @@ The **Disaster Response Analyzer** is an advanced data processing and machine le
 - [Data Processing Pipeline](#data-processing-pipeline)
 - [Machine Learning Pipeline](#machine-learning-pipeline)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Project Structure
 The repository is organized as follows:
