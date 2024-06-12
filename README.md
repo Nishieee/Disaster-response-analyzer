@@ -90,7 +90,7 @@ The `train_classifier.py` script trains and evaluates a machine learning model f
 To run the web application locally:
 
 ```bash
-python app/run.py
+python run.py
 ```
 
 Access the application at [http://localhost:3001/](http://localhost:3001/) in your web browser. The application allows you to input new messages and receive classification results.
