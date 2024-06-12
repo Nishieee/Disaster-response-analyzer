@@ -42,4 +42,55 @@ Disaster-response-analyzer/
 ├── README.md                  # Project documentation
 └── .gitignore                 # Git ignore file
 
+# Disaster Response Analyzer
+
+This is a markdown code cell outlining the Disaster Response Analyzer project.
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Nishieee/Disaster-response-analyzer.git
+cd Disaster-response-analyzer
+```
+
+Create and activate a virtual environment:
+
+```bash
+python3 -m venv env
+source env/bin/activate
+```
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Data Processing Pipeline
+
+The `process_data.py` script implements an ETL (Extract, Transform, Load) pipeline to process and clean the disaster message data. The pipeline performs the following tasks:
+
+- **Extract**: Load raw data from CSV files.
+- **Transform**: Clean and preprocess data, including tokenization, lemmatization, and handling missing values.
+- **Load**: Store the processed data into a SQLite database for efficient retrieval.
+
+## Machine Learning Pipeline
+
+The `train_classifier.py` script trains and evaluates a machine learning model for classifying disaster messages. The pipeline involves these stages:
+
+- **Feature Engineering**: Transform text data into numerical features using NLP techniques.
+- **Model Training**: Train a multi-output classification model to categorize messages into multiple categories (e.g., food, shelter, rescue).
+- **Evaluation**: Assess model performance using metrics to ensure accuracy and robustness.
+
+## Usage
+
+To run the web application locally:
+
+```bash
+python app/run.py
+```
+
+Access the application at [http://localhost:3001/](http://localhost:3001/) in your web browser. The application allows you to input new messages and receive classification results.
 
