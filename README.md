@@ -1,95 +1,99 @@
 # Disaster Response Analyzer
 
-## Overview
-The **Disaster Response Analyzer** is an advanced data processing and machine learning pipeline designed to classify and prioritize emergency messages during disaster events. This system leverages state-of-the-art Natural Language Processing (NLP) techniques and a robust data transformation architecture to ensure efficient and accurate response coordination.
+A machine learning application that classifies emergency messages during disaster events to help coordinate response efforts.
 
-## Table of Contents
-- [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Data Processing Pipeline](#data-processing-pipeline)
-- [Machine Learning Pipeline](#machine-learning-pipeline)
-- [Usage](#usage)
+## Live Demo
+Try the application: [Disaster Response Analyzer](https://www.nishimatlani.xyz/Disaster-Response-Analyzer-1cd92114eb8781b1921bccc9a6a59ea0)
+
+## Overview
+This project processes disaster messages and categorizes them into 36 different response categories using natural language processing and machine learning. It includes a web interface for real-time message classification.
 
 ## Project Structure
-The repository is organized as follows:
-
-```plaintext
+```
 Disaster-response-analyzer/
-│
-├── app/
-│   ├── run.py                 # Flask web application entry point
-│   ├── templates/
-│       ├── master.html        # Main page of the web application
-│       └── go.html            # Classification result page
-│
-├── data/
-│   ├── disaster_messages.csv  # Dataset containing disaster messages
-│   ├── disaster_categories.csv# Dataset containing message categories
-│   ├── process_data.py        # Script for data cleaning and processing
-│   └── DisasterResponse.db    # SQLite database for processed data
-│
-├── models/
-│   ├── train_classifier.py    # Script for training the ML model
-│   └── classifier.pkl         # Trained ML model
-│
-├── notebooks/
-│   ├── ETL Pipeline Preparation.ipynb   # Jupyter notebook for ETL pipeline exploration
-│   └── ML Pipeline Preparation.ipynb    # Jupyter notebook for ML pipeline exploration
-│
-├── requirements.txt           # Required dependencies for the project
-├── README.md                  # Project documentation
-└── .gitignore                 # Git ignore file
+├── app/                    # Flask web application
+│   ├── run.py             # Main application file
+│   ├── templates/         # HTML templates
+│   └── static/           # CSS and assets
+├── data/                  # Data processing
+│   ├── process_data.py   # ETL pipeline
+│   ├── disaster_messages.csv
+│   ├── disaster_categories.csv
+│   └── DisasterResponse.db
+├── models/               # Machine learning
+│   ├── train_classifier.py
+│   └── classifier.pk
+└── requirements         # Dependencies
 ```
 
-# Disaster Response Analyzer
+## Backend Workflow
 
-This is a markdown code cell outlining the Disaster Response Analyzer project.
+![Backend Workflow](Disaster_Response_ArchDiagram.png)
+
+The workflow begins with raw disaster message data that undergoes ETL processing to create a clean, structured dataset. Text data is then transformed into numerical features using TF-IDF vectorization for machine learning. The model training phase includes data augmentation to handle class imbalance and uses XGBoost with hyperparameter tuning for optimal performance. Finally, the trained model is deployed as a Flask web application on AWS EC2 for real-time message classification.
 
 ## Installation
 
-Clone the repository:
+1. Clone the repository
+   ```bash
+   git clone https://github.com/Nishieee/Disaster-response-analyzer.git
+   cd Disaster-response-analyzer
+   ```
 
-```bash
-git clone https://github.com/Nishieee/Disaster-response-analyzer.git
-cd Disaster-response-analyzer
-```
+2. Create virtual environment
+   ```bash
+   python3 -m venv env
+   source env/bin/activate
+   ```
 
-Create and activate a virtual environment:
+3. Install dependencies
+   ```bash
+   pip install -r requirements
+   ```
 
-```bash
-python3 -m venv env
-source env/bin/activate
-```
+4. Run the application
+   ```bash
+   python app/run.py
+   ```
 
-Install the required dependencies:
+5. Open http://localhost:3001 in your browser
 
-```bash
-pip install -r requirements.txt
-```
+## Data Processing
+The ETL pipeline:
+- Loads 26,248 disaster messages from CSV files
+- Cleans and preprocesses text data
+- Handles multilingual content (English, French, Haitian Creole)
+- Converts categories to binary classification format
+- Stores processed data in SQLite database
 
-## Data Processing Pipeline
+## Machine Learning Model
+- **Algorithm**: XGBoost with MultiOutputClassifier
+- **Features**: TF-IDF vectorization of preprocessed text
+- **Categories**: 36 disaster response classifications including:
+  - Emergency response (search & rescue, security, military)
+  - Medical aid (medical help, hospitals, medical products)
+  - Basic needs (food, water, shelter, clothing)
+  - Infrastructure (buildings, electricity, transport)
+  - Weather events (floods, storm, fire, earthquake)
 
-The `process_data.py` script implements an ETL (Extract, Transform, Load) pipeline to process and clean the disaster message data. The pipeline performs the following tasks:
+## Web Application
+- Flask-based interface for message classification
+- Interactive visualizations of dataset distribution
+- Real-time prediction results
+- Word cloud of common terms in disaster messages
 
-- **Extract**: Load raw data from CSV files.
-- **Transform**: Clean and preprocess data, including tokenization, lemmatization, and handling missing values.
-- **Load**: Store the processed data into a SQLite database for efficient retrieval.
+## Technologies Used
+- **Backend**: Flask, Python
+- **ML**: scikit-learn, XGBoost, NLTK
+- **Data**: pandas, SQLAlchemy
+- **Visualization**: Plotly, matplotlib, wordcloud
 
-## Machine Learning Pipeline
+## Dataset
+- 26,248 disaster messages
+- 36 classification categories
+- Multiple languages (English, French, Haitian Creole)
+- Message sources: direct reports, news, social media
 
-The `train_classifier.py` script trains and evaluates a machine learning model for classifying disaster messages. The pipeline involves these stages:
-
-- **Feature Engineering**: Transform text data into numerical features using NLP techniques.
-- **Model Training**: Train a multi-output classification model to categorize messages into multiple categories (e.g., food, shelter, rescue).
-- **Evaluation**: Assess model performance using metrics to ensure accuracy and robustness.
-
-## Usage
-
-To run the web application locally:
-
-```bash
-python run.py
-```
-
-Access the application at [http://localhost:3001/](http://localhost:3001/) in your web browser. The application allows you to input new messages and receive classification results.
+## Author
+Nishit Matlani - [GitHub](https://github.com/Nishieee) | [Portfolio](https://www.nishimatlani.xyz)
 
