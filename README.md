@@ -2,9 +2,6 @@
 
 A machine learning application that classifies emergency messages during disaster events to help coordinate response efforts.
 
-## Live Demo
-Try the application: [Disaster Response Analyzer](https://www.nishimatlani.xyz/Disaster-Response-Analyzer-1cd92114eb8781b1921bccc9a6a59ea0)
-
 ## Overview
 This project processes disaster messages and categorizes them into 36 different response categories using natural language processing and machine learning. It includes a web interface for real-time message classification.
 
